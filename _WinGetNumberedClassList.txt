@@ -1,0 +1,31 @@
+###User Defined Function###
+_WinGetNumberedClassList
+
+###Description###
+Retrieves the classes from a window in a format that can be used where control IDs are expected.
+
+###Syntax###
+_WinGetNumberedClassList ($sTitle [, $sText [, $fAsArray] ] )
+
+###Parameters###
+@@ParamTable@@
+$sTitle
+	The title of the window to read.
+$sText
+	Optional: The text of the window to read.
+$fAsArray
+	Optional: Boolean to determine whether to return the result as an array (defaults to WinGetClassList() behaviour, i.e. False).
+@@End@@
+
+###ReturnValue###
+Success: If $fAsArray = True, returns a list of enumerated ClassNameNNs where the first element is a count of entries. If $fAsArray = False, returns an @LF-delimited list (exactly like WinGetClassList()).
+Failure: Returns an empty string or array (depending on the requested type) and sets @Error to 1.
+
+###Remarks###
+None.
+
+###Related###
+WinGetClassList
+
+###Example###
+@@IncludeExample@@
