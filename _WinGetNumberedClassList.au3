@@ -43,7 +43,9 @@ Func _WinGetNumberedClassList($sTitle, $sText = '', $fAsArray = False)
 	EndIf
 
 	; Prepare an array to hold the numbered classes
-	ReDim $avClasses[StringLen($sClassStubList) - StringLen(StringReplace($sClassStubList, @LF, '')) + 1]
+	; @Extended will hold the number of unnumbered classes found
+	StringReplace($sClassStubList, @LF, '')
+	ReDim $avClasses[@Extended + 1]
 
 	; Count each unique class, enumerate them in the array and remove them from the string
 	Do
