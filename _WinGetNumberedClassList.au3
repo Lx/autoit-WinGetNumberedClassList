@@ -25,6 +25,9 @@ Func _WinGetNumberedClassList($sTitle, $sText = '', $fAsArray = False)
 
 	Local $avClasses[1], $iCounter, $sClasses, $sClassStub, $sClassStubList
 
+	; The first element of the $avClasses array will hold a count
+	$avClasses[0] = 0
+
 	; Request an unnumbered class list
 	$sClassStubList = WinGetClassList($sTitle, $sText)
 
@@ -33,7 +36,6 @@ Func _WinGetNumberedClassList($sTitle, $sText = '', $fAsArray = False)
 	If $sClassStubList = '' Then
 		If @Error Then SetError(1)
 		If $fAsArray Then
-			$avClasses[0] = 0
 			Return $avClasses
 		Else
 			Return ''
@@ -42,9 +44,6 @@ Func _WinGetNumberedClassList($sTitle, $sText = '', $fAsArray = False)
 
 	; Prepare an array to hold the numbered classes
 	ReDim $avClasses[StringLen($sClassStubList) - StringLen(StringReplace($sClassStubList, @LF, '')) + 1]
-
-	; The first element will contain a count
-	$avClasses[0] = 0
 
 	; Count each unique class, enumerate them in the array and remove them from the string
 	Do
