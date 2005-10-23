@@ -34,7 +34,7 @@ Func _WinGetNumberedClassList($sTitle, $sText = '', $fAsArray = False)
 	; Return an empty response if no controls exist
 	; Additionally set @Error if the specified window was not found
 	If $sClassStubList = '' Then
-		If @Error Then SetError(1)
+		SetError(@Error)
 		If $fAsArray Then
 			Return $avClasses
 		Else
